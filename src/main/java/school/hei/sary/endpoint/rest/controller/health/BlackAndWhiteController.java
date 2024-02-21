@@ -13,7 +13,7 @@ public class BlackAndWhiteController {
     BucketComponent bucketComponent;
     @PostMapping ("/upload/{bucketKey}")
     public ResponseEntity<String> uploadFileToS3(
-            @RequestBody File file,
+            @RequestParam("file") File file,
             @PathVariable String bucketKey) {
         try {
             FileHash fileHash = bucketComponent.upload(file, bucketKey);
