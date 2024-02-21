@@ -1,5 +1,6 @@
 package school.hei.sary.endpoint.rest.controller.health;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,11 @@ import java.io.File;
 @RestController
 public class BlackAndWhiteController {
     BucketComponent bucketComponent;
+
+    @Autowired
+    public BlackAndWhiteController(BucketComponent bucketComponent) {
+        this.bucketComponent = bucketComponent;
+    }
     @PostMapping ("/upload/{bucketKey}")
     public ResponseEntity<String> uploadFileToS3(
             @RequestBody File file,
